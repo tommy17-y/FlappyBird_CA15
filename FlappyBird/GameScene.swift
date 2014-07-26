@@ -8,21 +8,6 @@
 
 import SpriteKit
 
-extension SKNode {
-    class func unarchiveFromFileInGameScene(file : NSString) -> SKNode? {
-        
-        let path = NSBundle.mainBundle().pathForResource(file, ofType: "sks")
-        
-        let sceneData = NSData.dataWithContentsOfFile(path, options: .DataReadingMappedIfSafe, error: nil)
-        let archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
-        
-        archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
-        let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as end
-        archiver.finishDecoding()
-        return scene
-    }
-}
-
 class GameScene: SKScene, SKPhysicsContactDelegate{
     let verticalPipeGap = 150.0
     
@@ -359,7 +344,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         appDelegate.scoreNum = score
         
-        if let scene = end.unarchiveFromFileInGameScene("end") as? end {
+        if let scene = end.unarchiveFromFileForEnd("end") as? end {
             let skView = self.view as SKView
             skView.showsFPS = true
             skView.showsNodeCount = true

@@ -24,6 +24,8 @@
 		719EBCF719838B1A00103E0E /* PlaySounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719EBCF619838B1A00103E0E /* PlaySounds.swift */; };
 		719EBCF919838EB000103E0E /* star.caf in Resources */ = {isa = PBXBuildFile; fileRef = 719EBCF819838EB000103E0E /* star.caf */; };
 		B66EFA9719835532009AE38F /* end.sks in Resources */ = {isa = PBXBuildFile; fileRef = B66EFA9619835532009AE38F /* end.sks */; };
+		B6BB0329198390F300FEE3F6 /* start.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BB0328198390F300FEE3F6 /* start.swift */; };
+		B6BB032B1983910400FEE3F6 /* start.sks in Resources */ = {isa = PBXBuildFile; fileRef = B6BB032A1983910400FEE3F6 /* start.sks */; };
 		B6FCF2A91983565500AD0B7A /* end.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FCF2A81983565500AD0B7A /* end.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +61,8 @@
 		719EBCF619838B1A00103E0E /* PlaySounds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaySounds.swift; path = FlappyBird/PlaySounds.swift; sourceTree = SOURCE_ROOT; };
 		719EBCF819838EB000103E0E /* star.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = star.caf; sourceTree = "<group>"; };
 		B66EFA9619835532009AE38F /* end.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = end.sks; sourceTree = "<group>"; };
+		B6BB0328198390F300FEE3F6 /* start.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = start.swift; sourceTree = "<group>"; };
+		B6BB032A1983910400FEE3F6 /* start.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = start.sks; sourceTree = "<group>"; };
 		B6FCF2A81983565500AD0B7A /* end.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = end.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,6 +117,8 @@
 				4374520A193D163800654986 /* Images.xcassets */,
 				437A3DB9193D326A00909BA0 /* bird.atlas */,
 				437451FD193D163700654986 /* Supporting Files */,
+				B6BB0328198390F300FEE3F6 /* start.swift */,
+				B6BB032A1983910400FEE3F6 /* start.sks */,
 			);
 			path = FlappyBird;
 			sourceTree = "<group>";
@@ -237,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				719EBCF319838AED00103E0E /* jump.caf in Resources */,
+				B6BB032B1983910400FEE3F6 /* start.sks in Resources */,
 				719EBCF119838AED00103E0E /* default.caf in Resources */,
 				4374520B193D163800654986 /* Images.xcassets in Resources */,
 				719EBCF019838AED00103E0E /* death.caf in Resources */,
@@ -267,6 +274,7 @@
 			files = (
 				43745204193D163800654986 /* GameScene.swift in Sources */,
 				43745206193D163800654986 /* GameViewController.swift in Sources */,
+				B6BB0329198390F300FEE3F6 /* start.swift in Sources */,
 				719EBCF719838B1A00103E0E /* PlaySounds.swift in Sources */,
 				43745200193D163700654986 /* AppDelegate.swift in Sources */,
 				B6FCF2A91983565500AD0B7A /* end.swift in Sources */,

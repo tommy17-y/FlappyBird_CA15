@@ -10,7 +10,7 @@ import UIKit
 import SpriteKit
 
 extension SKNode {
-    class func unarchiveFromFile(file : NSString) -> SKNode? {
+    class func unarchiveFromFileForGameScene(file : NSString) -> SKNode? {
         
         let path = NSBundle.mainBundle().pathForResource(file, ofType: "sks")
         
@@ -22,6 +22,30 @@ extension SKNode {
         archiver.finishDecoding()
         return scene
     }
+    class func unarchiveFromFileForStart(file : NSString) -> SKNode? {
+        
+        let path = NSBundle.mainBundle().pathForResource(file, ofType: "sks")
+        
+        let sceneData = NSData.dataWithContentsOfFile(path, options: .DataReadingMappedIfSafe, error: nil)
+        let archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
+        
+        archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
+        let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as start
+        archiver.finishDecoding()
+        return scene
+    }
+    class func unarchiveFromFileForEnd(file : NSString) -> SKNode? {
+        
+        let path = NSBundle.mainBundle().pathForResource(file, ofType: "sks")
+        
+        let sceneData = NSData.dataWithContentsOfFile(path, options: .DataReadingMappedIfSafe, error: nil)
+        let archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
+        
+        archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
+        let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as end
+        archiver.finishDecoding()
+        return scene
+    }
 }
 
 class GameViewController: UIViewController {
@@ -29,7 +53,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene {
+        if let scene = start.unarchiveFromFileForStart("start") as? start {
             // Configure the view.
             let skView = self.view as SKView
             skView.showsFPS = true

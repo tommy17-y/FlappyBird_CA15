@@ -64,7 +64,7 @@ class end: SKScene, SKPhysicsContactDelegate {
             if let name = node.name {
                 if name == "back" {
                     //遷移
-                    if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene {
+                    if let scene = start.unarchiveFromFileForStart("start") as? start {
                         let skView = self.view as SKView
                         skView.showsFPS = true
                         skView.showsNodeCount = true
