@@ -22,6 +22,7 @@
 		719EBCF419838AED00103E0E /* powerup.caf in Resources */ = {isa = PBXBuildFile; fileRef = 719EBCEE19838AED00103E0E /* powerup.caf */; };
 		719EBCF519838AED00103E0E /* powerup2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 719EBCEF19838AED00103E0E /* powerup2.caf */; };
 		719EBCF719838B1A00103E0E /* PlaySounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719EBCF619838B1A00103E0E /* PlaySounds.swift */; };
+		719EBCF919838EB000103E0E /* star.caf in Resources */ = {isa = PBXBuildFile; fileRef = 719EBCF819838EB000103E0E /* star.caf */; };
 		B66EFA9719835532009AE38F /* end.sks in Resources */ = {isa = PBXBuildFile; fileRef = B66EFA9619835532009AE38F /* end.sks */; };
 		B6FCF2A91983565500AD0B7A /* end.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FCF2A81983565500AD0B7A /* end.swift */; };
 /* End PBXBuildFile section */
@@ -56,6 +57,7 @@
 		719EBCEE19838AED00103E0E /* powerup.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = powerup.caf; sourceTree = "<group>"; };
 		719EBCEF19838AED00103E0E /* powerup2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = powerup2.caf; sourceTree = "<group>"; };
 		719EBCF619838B1A00103E0E /* PlaySounds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaySounds.swift; path = FlappyBird/PlaySounds.swift; sourceTree = SOURCE_ROOT; };
+		719EBCF819838EB000103E0E /* star.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = star.caf; sourceTree = "<group>"; };
 		B66EFA9619835532009AE38F /* end.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = end.sks; sourceTree = "<group>"; };
 		B6FCF2A81983565500AD0B7A /* end.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = end.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -143,6 +145,7 @@
 		719EBCE919838AED00103E0E /* sounds */ = {
 			isa = PBXGroup;
 			children = (
+				719EBCF819838EB000103E0E /* star.caf */,
 				719EBCEA19838AED00103E0E /* death.caf */,
 				719EBCEB19838AED00103E0E /* default.caf */,
 				719EBCEC19838AED00103E0E /* get.caf */,
@@ -239,6 +242,7 @@
 				719EBCF019838AED00103E0E /* death.caf in Resources */,
 				43745202193D163700654986 /* GameScene.sks in Resources */,
 				719EBCF419838AED00103E0E /* powerup.caf in Resources */,
+				719EBCF919838EB000103E0E /* star.caf in Resources */,
 				437A3DBA193D326A00909BA0 /* bird.atlas in Resources */,
 				43745209193D163800654986 /* Main.storyboard in Resources */,
 				B66EFA9719835532009AE38F /* end.sks in Resources */,

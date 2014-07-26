@@ -19,6 +19,8 @@ class PlaySounds{
         self.se["jump"] = AVAudioPlayer()
         self.se["death"] = AVAudioPlayer()
         self.se["powerup"] = AVAudioPlayer()
+        self.se["powerup2"] = AVAudioPlayer()
+        self.se["get"] = AVAudioPlayer()
         
         for name in se.keys {
             self.se[name] = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(name, ofType: "caf")), error: nil)
@@ -29,6 +31,7 @@ class PlaySounds{
         
         // BGM
         self.bgm["default"] = AVAudioPlayer()
+        self.bgm["star"] = AVAudioPlayer()
         
         for name in bgm.keys {
             self.bgm[name] = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(name, ofType: "caf")), error: nil)
