@@ -62,7 +62,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         self.physicsWorld.contactDelegate = self
         
         // setup background color
-        skyColor = SKColor(red: 81.0/255.0, green: 192.0/255.0, blue: 201.0/255.0, alpha: 1.0)
+        skyColor = SKColor(red: 255.0/255.0, green: 120.0/255.0, blue: 0.0/255.0, alpha: 1.0)
         self.backgroundColor = skyColor
         
         moving = SKNode()
@@ -77,8 +77,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         moving.addChild(items)
         
         
+        // skyline
+        let skyTexture = SKTexture(imageNamed: "mount.png")
+        skyTexture.filteringMode = .Nearest
+        var mountNode : SKSpriteNode! = SKSpriteNode(texture : skyTexture)
+        mountNode.anchorPoint = CGPointMake(0.0, 0.0)
+        mountNode.size = CGSizeMake(self.frame.size.width ,
+            self.frame.size.height / 2)
+        mountNode.position = CGPointMake(100, 0)
+        
+        self.addChild(mountNode)
+
+        
         // ground
-        let groundTexture = SKTexture(imageNamed: "land")
+        let groundTexture = SKTexture(imageNamed: "land2.png")
         groundTexture.filteringMode = .Nearest // shorter form for SKTextureFilteringMode.Nearest
         
         let moveGroundSprite = SKAction.moveByX(-groundTexture.size().width * 2.0, y: 0, duration: NSTimeInterval(0.02 * groundTexture.size().width * 2.0))
@@ -87,11 +99,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         
         for var i:CGFloat = 0; i < 2.0 + self.frame.size.width / ( groundTexture.size().width * 2.0 ); ++i {
             let sprite = SKSpriteNode(texture: groundTexture)
-            sprite.setScale(2.0)
-            sprite.position = CGPointMake(i * sprite.size.width, sprite.size.height / 2.0 - 100)
+            sprite.setScale(2.5)
+            sprite.position = CGPointMake(i * sprite.size.width, sprite.size.height / 2.0)
             sprite.runAction(moveGroundSpritesForever)
             moving.addChild(sprite)
         }
+
         
         // Upper
         let UpperTexture = SKTexture(imageNamed: "land_inv")
@@ -109,27 +122,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             moving.addChild(sprite)
         }
         
-        // skyline
-        let skyTexture = SKTexture(imageNamed: "sky")
-        skyTexture.filteringMode = .Nearest
-        
-        let moveSkySprite = SKAction.moveByX(-skyTexture.size().width * 2.0, y: 0, duration: NSTimeInterval(0.1 * skyTexture.size().width * 2.0))
-        let resetSkySprite = SKAction.moveByX(skyTexture.size().width * 2.0, y: 0, duration: 0.0)
-        let moveSkySpritesForever = SKAction.repeatActionForever(SKAction.sequence([moveSkySprite,resetSkySprite]))
-        
-        for var i:CGFloat = 0; i < 2.0 + self.frame.size.width / ( skyTexture.size().width * 2.0 ); ++i {
-            let sprite = SKSpriteNode(texture: skyTexture)
-            sprite.setScale(2.0)
-            sprite.zPosition = -20
-            sprite.position = CGPointMake(i * sprite.size.width, sprite.size.height / 2.0 + groundTexture.size().height * 2.0 - 100)
-            sprite.runAction(moveSkySpritesForever)
-            moving.addChild(sprite)
-        }
         
         // create the pipes textures
-        pipeTextureUp = SKTexture(imageNamed: "PipeUp")
+        pipeTextureUp = SKTexture(imageNamed: "pipeUP.png")
         pipeTextureUp.filteringMode = .Nearest
-        pipeTextureDown = SKTexture(imageNamed: "PipeDown")
+        pipeTextureDown = SKTexture(imageNamed: "pipeDOWN.png")
         pipeTextureDown.filteringMode = .Nearest
         
         // create the pipes movement actions
@@ -158,9 +155,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         self.runAction(spawnThenDelayForeverItem)
         
         // setup our bird
-        let birdTexture1 = SKTexture(imageNamed: "bird-01")
+        let birdTexture1 = SKTexture(imageNamed: "swift_bird.png")
         birdTexture1.filteringMode = .Nearest
-        let birdTexture2 = SKTexture(imageNamed: "bird-02")
+        let birdTexture2 = SKTexture(imageNamed: "swift_bird.png")
         birdTexture2.filteringMode = .Nearest
         
         let anim = SKAction.animateWithTextures([birdTexture1, birdTexture2], timePerFrame: 0.2)
@@ -262,8 +259,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         let height = UInt32( Float(self.frame.size.height) / 3 )
         let yyy = arc4random() % height + height
         
-        let item = SKSpriteNode(texture: SKTexture(imageNamed: "bird-03"))
-        item.setScale(2.0)
+        let item = SKSpriteNode(texture: SKTexture(imageNamed: "item-01.png"))
+        item.setScale(0.6)
         let cgfloatY : CGFloat = CGFloat(Float(yyy))
         item.position = CGPointMake(0.0, cgfloatY)
         

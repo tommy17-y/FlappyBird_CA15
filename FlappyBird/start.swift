@@ -10,21 +10,23 @@ import Foundation
 import SpriteKit
 
 class start: SKScene, SKPhysicsContactDelegate {
-    var titleLabelNode : SKLabelNode!
+    var titleNode : SKSpriteNode!
     var startButtonNode : SKSpriteNode!
     
     override func didMoveToView(view: SKView) {
         
-        titleLabelNode = SKLabelNode(fontNamed:"Chalkduster")
-        titleLabelNode.position = CGPointMake( CGRectGetMidX( self.frame ), self.frame.size.height / 8 * 5 )
-        titleLabelNode.zPosition = 100
-        titleLabelNode.text = "Swifty Bird"
-        titleLabelNode.fontSize = 60.0
-        titleLabelNode.verticalAlignmentMode = .Center
-        self.addChild(titleLabelNode)
+        let titleTexture = SKTexture(imageNamed: "rogo.png")
+        
+        titleNode = SKSpriteNode(texture : titleTexture)
+        titleNode.anchorPoint = CGPointMake(0.0, 0.0)
+        titleNode.size = CGSizeMake(self.frame.size.width / 3,
+            self.frame.size.width / 15)
+        titleNode.position = CGPointMake((self.frame.size.width - titleNode.frame.size.width) / 2,
+            (self.frame.size.height - titleNode.frame.size.height) / 5 * 3)
+        self.addChild(titleNode)
         
         
-        let birdTexture1 = SKTexture(imageNamed: "bird-01")
+        let birdTexture1 = SKTexture(imageNamed: "start.png")
         
         startButtonNode = SKSpriteNode(texture : birdTexture1)
         startButtonNode.anchorPoint = CGPointMake(0.0, 0.0)
