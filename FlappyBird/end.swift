@@ -14,12 +14,22 @@ class end: SKScene, SKPhysicsContactDelegate {
     var backButtonNode : SKSpriteNode!
     
     override func didMoveToView(view: SKView) {
-
+        
+        let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        var score : Int? = appDelegate.scoreNum
+        
         scoreLabelNode = SKLabelNode(fontNamed:"MarkerFelt-Wide")
         scoreLabelNode.position = CGPointMake( CGRectGetMidX( self.frame ), self.frame.size.height / 8 * 5 )
         scoreLabelNode.zPosition = 100
-        scoreLabelNode.text = "Game Over"
-        scoreLabelNode.fontSize = 50.0
+        
+        if score {
+            scoreLabelNode.text = String(score!)
+        } else {
+            scoreLabelNode.text = String(0)
+            score = 0
+        }
+        
+        scoreLabelNode.fontSize = 80.0
         scoreLabelNode.verticalAlignmentMode = .Center
         self.addChild(scoreLabelNode)
         
