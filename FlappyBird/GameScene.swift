@@ -263,6 +263,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         
         // Restart animation
         moving.speed = 1
+        
+        score = 0
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -343,6 +345,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     func gameOver () {
+        
+        let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        appDelegate.scoreNum = score
+        
         if let scene = end.unarchiveFromFileInGameScene("end") as? end {
             let skView = self.view as SKView
             skView.showsFPS = true
