@@ -364,6 +364,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                 }
                 
                 bird.hp = bird.hp + heal > MAX_HP ? MAX_HP : bird.hp + heal
+                sounds.playBGM("star")
                 
             } else if ( contact.bodyA.categoryBitMask & noneCategory ) == noneCategory || ( contact.bodyB.categoryBitMask & noneCategory ) == noneCategory {
             } else {
@@ -371,13 +372,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                 if bird.hp > 0 {
                     bird.hp = bird.hp - 1
                     
+                    if bird.hp == 0 {
+                        sounds.playBGM("default")
+                    }
+                    
                     if contact.bodyA.categoryBitMask == pipeCategory {
                         var node : SKSpriteNode = contact.bodyA.node as SKSpriteNode
                         node.removeFromParent()
-                    } else {
+                    }
+                    if contact.bodyB.categoryBitMask == pipeCategory {
                         var node : SKSpriteNode = contact.bodyB.node as SKSpriteNode
                         node.removeFromParent()
                     }
+                    
+                    sounds.playSE("powerup")
                     
                     return
                 }
