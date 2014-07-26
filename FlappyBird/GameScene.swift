@@ -33,6 +33,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     var movePipesAndRemove:SKAction!
     var moving:SKNode!
     var pipes:SKNode!
+    var items:SKNode!
+    var moveItemsAndRemove:SKAction!
     var canRestart = Bool()
     var scoreLabelNode:SKLabelNode!
     var score = NSInteger()
@@ -41,6 +43,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     let worldCategory: UInt32 = 1 << 1
     let pipeCategory: UInt32 = 1 << 2
     let scoreCategory: UInt32 = 1 << 3
+    let itemCategory: UInt32 = 1 << 4
     
     override func didMoveToView(view: SKView) {
 
@@ -58,6 +61,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         self.addChild(moving)
         pipes = SKNode()
         moving.addChild(pipes)
+        items = SKNode()
+        moving.addChild(items)
         
         // ground
         let groundTexture = SKTexture(imageNamed: "land")
@@ -110,6 +115,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         let spawnThenDelay = SKAction.sequence([spawn, delay])
         let spawnThenDelayForever = SKAction.repeatActionForever(spawnThenDelay)
         self.runAction(spawnThenDelayForever)
+        
+        // create the items movement actions
+        let moveItems = SKAction.moveByX(-distanceToMove, y:0.0, duration:NSTimeInterval(0.01 * distanceToMove))
+        let removeItems = SKAction.removeFromParent()
+        moveItemsAndRemove = SKAction.sequence([moveItems, removeItems])
+        
+        // spawn the items
+        let spawnItem = SKAction.runBlock({() in self.spawnItems()})
+        let delayItem = SKAction.waitForDuration(NSTimeInterval(4.0))
+        let spawnThenDelayItem = SKAction.sequence([spawnItem, delayItem])
+        let spawnThenDelayForeverItem = SKAction.repeatActionForever(spawnThenDelayItem)
+        self.runAction(spawnThenDelayForeverItem)
         
         // setup our bird
         let birdTexture1 = SKTexture(imageNamed: "bird-01")
@@ -198,6 +215,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         
     }
     
+    func spawnItems() {
+        let itemPair = SKNode()
+        itemPair.position = CGPointMake( self.frame.size.width - pipeTextureUp.size().width * 2, 0 )
+        itemPair.zPosition = -10
+        
+        let height = UInt32( Float(self.frame.size.height) / 3 )
+        let yyy = arc4random() % height + height
+        
+        let item = SKSpriteNode(texture: SKTexture(imageNamed: "bird-03"))
+        item.setScale(2.0)
+        let cgfloatY : CGFloat = CGFloat(Float(yyy))
+        item.position = CGPointMake(0.0, cgfloatY)
+        
+        
+        item.physicsBody = SKPhysicsBody(circleOfRadius: bird.size.height / 2.0)
+        item.physicsBody.dynamic = false
+        item.physicsBody.categoryBitMask = itemCategory
+        item.physicsBody.contactTestBitMask = birdCategory
+        itemPair.addChild(item)
+        
+        itemPair.runAction(moveItemsAndRemove)
+        items.addChild(itemPair)
+        
+    }
+    
     func resetScene (){
         // Move bird to original position and reset velocity
         bird.position = CGPointMake(self.frame.size.width / 2.5, CGRectGetMidY(self.frame))
@@ -208,6 +250,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         
         // Remove all existing pipes
         pipes.removeAllChildren()
+        
+        // Remove all existing items
+        items.removeAllChildren()
         
         // Reset _canRestart
         canRestart = false
@@ -260,9 +305,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                 // Bird has contact with score entity
                 score++
                 scoreLabelNode.text = String(score)
+
+
                 
                 // Add a little visual feedback for the score increment
                 scoreLabelNode.runAction(SKAction.sequence([SKAction.scaleTo(1.5, duration:NSTimeInterval(0.1)), SKAction.scaleTo(1.0, duration:NSTimeInterval(0.1))]))
+            } else if ( contact.bodyA.categoryBitMask & itemCategory ) == itemCategory || (contact.bodyB.categoryBitMask & itemCategory) == itemCategory {
+                
+                if ( contact.bodyA.categoryBitMask & itemCategory ) == itemCategory {
+                    var node : SKSpriteNode = contact.bodyA.node as SKSpriteNode
+                    node.removeFromParent()
+                    
+                } else {
+                    var node : SKSpriteNode = contact.bodyB.node as SKSpriteNode
+                    node.removeFromParent()
+                }
+                
             } else {
                 
                 moving.speed = 0
