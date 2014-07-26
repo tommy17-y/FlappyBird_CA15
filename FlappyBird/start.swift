@@ -15,6 +15,9 @@ class start: SKScene, SKPhysicsContactDelegate {
     
     override func didMoveToView(view: SKView) {
         
+        self.backgroundColor = SKColor(red: 255.0/255.0, green: 120.0/255.0, blue: 0.0/255.0, alpha: 1.0)
+
+        
         let titleTexture = SKTexture(imageNamed: "rogo.png")
         
         titleNode = SKSpriteNode(texture : titleTexture)
