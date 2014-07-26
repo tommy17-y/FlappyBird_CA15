@@ -8,10 +8,28 @@
 
 import SpriteKit
 
+class BirdNode : SKSpriteNode {
+    var hp : Int
+    init() {
+        self.hp = 0
+        super.init()
+    }
+    
+    init(texture : SKTexture) {
+        self.hp = 0
+        super.init(texture: texture, color: nil, size: texture.size())
+    }
+    
+    init(texture: SKTexture!, color: UIColor!, size: CGSize)  {
+        self.hp = 0
+        super.init(texture : texture, color : color, size : size)
+    }
+}
+
 class GameScene: SKScene, SKPhysicsContactDelegate{
     var verticalPipeGap = 300.0
     
-    var bird:SKSpriteNode!
+    var bird:BirdNode!
     var skyColor:SKColor!
     var pipeTextureUp:SKTexture!
     var pipeTextureDown:SKTexture!
@@ -30,6 +48,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     let pipeCategory: UInt32 = 1 << 2
     let scoreCategory: UInt32 = 1 << 3
     let itemCategory: UInt32 = 1 << 4
+    let noneCategory: UInt32 = 1 << 5
+    
+    let MAX_HP : Int = 10
+    let heal : Int = 3
     
     override func didMoveToView(view: SKView) {
 
@@ -144,7 +166,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         let anim = SKAction.animateWithTextures([birdTexture1, birdTexture2], timePerFrame: 0.2)
         let flap = SKAction.repeatActionForever(anim)
         
-        bird = SKSpriteNode(texture: birdTexture1)
+        bird = BirdNode(texture: birdTexture1)
         bird.setScale(2.0)
         bird.position = CGPoint(x: self.frame.size.width * 0.35, y:self.frame.size.height * 0.35)
         bird.runAction(flap)
@@ -344,7 +366,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                     node.removeFromParent()
                 }
                 
+                bird.hp = bird.hp + heal > MAX_HP ? MAX_HP : bird.hp + heal
+                
+            } else if ( contact.bodyA.categoryBitMask & noneCategory ) == noneCategory || ( contact.bodyB.categoryBitMask & noneCategory ) == noneCategory {
             } else {
+                
+                if bird.hp > 0 {
+                    bird.hp = bird.hp - 1
+                    return
+                }
                 
                 moving.speed = 0
                 
