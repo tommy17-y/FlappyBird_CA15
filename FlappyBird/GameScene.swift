@@ -373,6 +373,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                 
                 if bird.hp > 0 {
                     bird.hp = bird.hp - 1
+                    
+                    if contact.bodyA.categoryBitMask == pipeCategory {
+                        var node : SKSpriteNode = contact.bodyA.node as SKSpriteNode
+                        node.removeFromParent()
+                    } else {
+                        var node : SKSpriteNode = contact.bodyB.node as SKSpriteNode
+                        node.removeFromParent()
+                    }
+                    
                     return
                 }
                 
