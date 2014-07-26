@@ -19,7 +19,7 @@ class end: SKScene, SKPhysicsContactDelegate {
         let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         var score : Int? = appDelegate.scoreNum
         
-        scoreLabelNode = SKLabelNode(fontNamed:"Chalkduster")
+        scoreLabelNode = SKLabelNode(fontNamed:"Gothic")
         scoreLabelNode.position = CGPointMake( CGRectGetMidX( self.frame ), self.frame.size.height / 8 * 4 )
         scoreLabelNode.zPosition = 100
         scoreLabelNode.fontSize = 70.0
@@ -32,7 +32,7 @@ class end: SKScene, SKPhysicsContactDelegate {
         }
         self.addChild(scoreLabelNode)
         
-        gameOverLabelNode = SKLabelNode(fontNamed:"Chalkduster")
+        gameOverLabelNode = SKLabelNode(fontNamed:"Gothic")
         gameOverLabelNode.position = CGPointMake( CGRectGetMidX( self.frame ), self.frame.size.height / 8 * 5 )
         gameOverLabelNode.zPosition = 100
         gameOverLabelNode.text = "Game Over"
@@ -41,7 +41,7 @@ class end: SKScene, SKPhysicsContactDelegate {
         self.addChild(gameOverLabelNode)
 
         
-        let birdTexture1 = SKTexture(imageNamed: "bird-01")
+        let birdTexture1 = SKTexture(imageNamed: "start.png")
 
         backButtonNode = SKSpriteNode(texture : birdTexture1)
         backButtonNode.anchorPoint = CGPointMake(0.0, 0.0)
