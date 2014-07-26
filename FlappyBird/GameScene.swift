@@ -235,13 +235,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         item.physicsBody.contactTestBitMask = birdCategory
         itemPair.addChild(item)
         
-        var contactNode = SKNode()
-        contactNode.position = CGPointMake( 0.0, cgfloatY)
-        contactNode.physicsBody = SKPhysicsBody(circleOfRadius: bird.size.height / 2.0)
-        contactNode.physicsBody.dynamic = false
-        contactNode.physicsBody.contactTestBitMask = birdCategory
-        itemPair.addChild(contactNode)
-        
         itemPair.runAction(moveItemsAndRemove)
         items.addChild(itemPair)
         
@@ -310,16 +303,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                 // Bird has contact with score entity
                 score++
                 scoreLabelNode.text = String(score)
+
+
                 
                 // Add a little visual feedback for the score increment
                 scoreLabelNode.runAction(SKAction.sequence([SKAction.scaleTo(1.5, duration:NSTimeInterval(0.1)), SKAction.scaleTo(1.0, duration:NSTimeInterval(0.1))]))
             } else if ( contact.bodyA.categoryBitMask & itemCategory ) == itemCategory || (contact.bodyB.categoryBitMask & itemCategory) == itemCategory {
                 
-                // remove items object
                 if ( contact.bodyA.categoryBitMask & itemCategory ) == itemCategory {
-                
-                } else {
+                    var node : SKSpriteNode = contact.bodyA.node as SKSpriteNode
+                    node.removeFromParent()
                     
+                } else {
+                    var node : SKSpriteNode = contact.bodyB.node as SKSpriteNode
+                    node.removeFromParent()
                 }
                 
             } else {
