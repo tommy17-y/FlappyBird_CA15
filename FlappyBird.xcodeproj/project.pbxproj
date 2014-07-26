@@ -15,6 +15,8 @@
 		4374520B193D163800654986 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4374520A193D163800654986 /* Images.xcassets */; };
 		43745217193D163800654986 /* FlappyBirdTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43745216193D163800654986 /* FlappyBirdTests.swift */; };
 		437A3DBA193D326A00909BA0 /* bird.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 437A3DB9193D326A00909BA0 /* bird.atlas */; };
+		B66EFA9719835532009AE38F /* end.sks in Resources */ = {isa = PBXBuildFile; fileRef = B66EFA9619835532009AE38F /* end.sks */; };
+		B6FCF2A91983565500AD0B7A /* end.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FCF2A81983565500AD0B7A /* end.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,8 @@
 		43745215193D163800654986 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43745216193D163800654986 /* FlappyBirdTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlappyBirdTests.swift; sourceTree = "<group>"; };
 		437A3DB9193D326A00909BA0 /* bird.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bird.atlas; sourceTree = "<group>"; };
+		B66EFA9619835532009AE38F /* end.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = end.sks; sourceTree = "<group>"; };
+		B6FCF2A81983565500AD0B7A /* end.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = end.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,8 @@
 				437451FF193D163700654986 /* AppDelegate.swift */,
 				43745201193D163700654986 /* GameScene.sks */,
 				43745203193D163800654986 /* GameScene.swift */,
+				B66EFA9619835532009AE38F /* end.sks */,
+				B6FCF2A81983565500AD0B7A /* end.swift */,
 				43745205193D163800654986 /* GameViewController.swift */,
 				43745207193D163800654986 /* Main.storyboard */,
 				4374520A193D163800654986 /* Images.xcassets */,
@@ -202,6 +208,7 @@
 				43745202193D163700654986 /* GameScene.sks in Resources */,
 				437A3DBA193D326A00909BA0 /* bird.atlas in Resources */,
 				43745209193D163800654986 /* Main.storyboard in Resources */,
+				B66EFA9719835532009AE38F /* end.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,6 +229,7 @@
 				43745204193D163800654986 /* GameScene.swift in Sources */,
 				43745206193D163800654986 /* GameViewController.swift in Sources */,
 				43745200193D163700654986 /* AppDelegate.swift in Sources */,
+				B6FCF2A91983565500AD0B7A /* end.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
