@@ -24,7 +24,7 @@ extension SKNode {
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate{
-    let verticalPipeGap = 200.0
+    let verticalPipeGap = 150.0
     
     var bird:SKSpriteNode!
     var skyColor:SKColor!

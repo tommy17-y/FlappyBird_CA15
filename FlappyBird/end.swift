@@ -11,6 +11,7 @@ import SpriteKit
 
 class end: SKScene, SKPhysicsContactDelegate {
     var scoreLabelNode : SKLabelNode!
+    var gameOverLabelNode : SKLabelNode!
     var backButtonNode : SKSpriteNode!
     
     override func didMoveToView(view: SKView) {
@@ -18,20 +19,27 @@ class end: SKScene, SKPhysicsContactDelegate {
         let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         var score : Int? = appDelegate.scoreNum
         
-        scoreLabelNode = SKLabelNode(fontNamed:"MarkerFelt-Wide")
-        scoreLabelNode.position = CGPointMake( CGRectGetMidX( self.frame ), self.frame.size.height / 8 * 5 )
+        scoreLabelNode = SKLabelNode(fontNamed:"Chalkduster")
+        scoreLabelNode.position = CGPointMake( CGRectGetMidX( self.frame ), self.frame.size.height / 8 * 4 )
         scoreLabelNode.zPosition = 100
-        
+        scoreLabelNode.fontSize = 70.0
+        scoreLabelNode.verticalAlignmentMode = .Center
         if score {
-            scoreLabelNode.text = String(score!)
+            scoreLabelNode.text = "score : " + String(score!)
         } else {
             scoreLabelNode.text = String(0)
             score = 0
         }
-        
-        scoreLabelNode.fontSize = 80.0
-        scoreLabelNode.verticalAlignmentMode = .Center
         self.addChild(scoreLabelNode)
+        
+        gameOverLabelNode = SKLabelNode(fontNamed:"Chalkduster")
+        gameOverLabelNode.position = CGPointMake( CGRectGetMidX( self.frame ), self.frame.size.height / 8 * 5 )
+        gameOverLabelNode.zPosition = 100
+        gameOverLabelNode.text = "Game Over"
+        gameOverLabelNode.fontSize = 60.0
+        gameOverLabelNode.verticalAlignmentMode = .Center
+        self.addChild(gameOverLabelNode)
+
         
         let birdTexture1 = SKTexture(imageNamed: "bird-01")
 
