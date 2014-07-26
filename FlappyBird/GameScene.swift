@@ -38,6 +38,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     var canRestart = Bool()
     var scoreLabelNode:SKLabelNode!
     var score = NSInteger()
+    var sounds = PlaySounds()
     
     let birdCategory: UInt32 = 1 << 0
     let worldCategory: UInt32 = 1 << 1
@@ -169,6 +170,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         scoreLabelNode.text = String(score)
         self.addChild(scoreLabelNode)
         
+        sounds.playBGM("default") // sounds
+        
     }
     
     func spawnPipes() {
@@ -241,6 +244,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     func resetScene (){
+        sounds.reset() // sounds
+        
+        
         // Move bird to original position and reset velocity
         bird.position = CGPointMake(self.frame.size.width / 2.5, CGRectGetMidY(self.frame))
         bird.physicsBody.velocity = CGVectorMake( 0, 0 )
@@ -275,6 +281,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                 
                 bird.physicsBody.velocity = CGVectorMake(0, 0)
                 bird.physicsBody.applyImpulse(CGVectorMake(0, 30))
+                
+                sounds.playSE("jump") // sounds
                 
             }
         }else if canRestart {
@@ -328,6 +336,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                 bird.physicsBody.collisionBitMask = worldCategory
                 bird.runAction(  SKAction.rotateByAngle(CGFloat(M_PI) * CGFloat(bird.position.y) * 0.01, duration:1), completion:{self.bird.speed = 0 })
                 
+                sounds.playSE("death") // sounds
+                sounds.stopBGM() // sounds
                 
                 // Flash background if contact is detected
                 self.removeActionForKey("flash")

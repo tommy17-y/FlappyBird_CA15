@@ -15,6 +15,13 @@
 		4374520B193D163800654986 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4374520A193D163800654986 /* Images.xcassets */; };
 		43745217193D163800654986 /* FlappyBirdTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43745216193D163800654986 /* FlappyBirdTests.swift */; };
 		437A3DBA193D326A00909BA0 /* bird.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 437A3DB9193D326A00909BA0 /* bird.atlas */; };
+		719EBCF019838AED00103E0E /* death.caf in Resources */ = {isa = PBXBuildFile; fileRef = 719EBCEA19838AED00103E0E /* death.caf */; };
+		719EBCF119838AED00103E0E /* default.caf in Resources */ = {isa = PBXBuildFile; fileRef = 719EBCEB19838AED00103E0E /* default.caf */; };
+		719EBCF219838AED00103E0E /* get.caf in Resources */ = {isa = PBXBuildFile; fileRef = 719EBCEC19838AED00103E0E /* get.caf */; };
+		719EBCF319838AED00103E0E /* jump.caf in Resources */ = {isa = PBXBuildFile; fileRef = 719EBCED19838AED00103E0E /* jump.caf */; };
+		719EBCF419838AED00103E0E /* powerup.caf in Resources */ = {isa = PBXBuildFile; fileRef = 719EBCEE19838AED00103E0E /* powerup.caf */; };
+		719EBCF519838AED00103E0E /* powerup2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 719EBCEF19838AED00103E0E /* powerup2.caf */; };
+		719EBCF719838B1A00103E0E /* PlaySounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719EBCF619838B1A00103E0E /* PlaySounds.swift */; };
 		B66EFA9719835532009AE38F /* end.sks in Resources */ = {isa = PBXBuildFile; fileRef = B66EFA9619835532009AE38F /* end.sks */; };
 		B6FCF2A91983565500AD0B7A /* end.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FCF2A81983565500AD0B7A /* end.swift */; };
 /* End PBXBuildFile section */
@@ -42,6 +49,13 @@
 		43745215193D163800654986 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43745216193D163800654986 /* FlappyBirdTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlappyBirdTests.swift; sourceTree = "<group>"; };
 		437A3DB9193D326A00909BA0 /* bird.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bird.atlas; sourceTree = "<group>"; };
+		719EBCEA19838AED00103E0E /* death.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = death.caf; sourceTree = "<group>"; };
+		719EBCEB19838AED00103E0E /* default.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.caf; sourceTree = "<group>"; };
+		719EBCEC19838AED00103E0E /* get.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = get.caf; sourceTree = "<group>"; };
+		719EBCED19838AED00103E0E /* jump.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = jump.caf; sourceTree = "<group>"; };
+		719EBCEE19838AED00103E0E /* powerup.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = powerup.caf; sourceTree = "<group>"; };
+		719EBCEF19838AED00103E0E /* powerup2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = powerup2.caf; sourceTree = "<group>"; };
+		719EBCF619838B1A00103E0E /* PlaySounds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaySounds.swift; path = FlappyBird/PlaySounds.swift; sourceTree = SOURCE_ROOT; };
 		B66EFA9619835532009AE38F /* end.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = end.sks; sourceTree = "<group>"; };
 		B6FCF2A81983565500AD0B7A /* end.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = end.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +99,8 @@
 		437451FC193D163700654986 /* FlappyBird */ = {
 			isa = PBXGroup;
 			children = (
+				719EBCF619838B1A00103E0E /* PlaySounds.swift */,
+				719EBCE919838AED00103E0E /* sounds */,
 				437451FF193D163700654986 /* AppDelegate.swift */,
 				43745201193D163700654986 /* GameScene.sks */,
 				43745203193D163800654986 /* GameScene.swift */,
@@ -122,6 +138,19 @@
 				43745215193D163800654986 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		719EBCE919838AED00103E0E /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				719EBCEA19838AED00103E0E /* death.caf */,
+				719EBCEB19838AED00103E0E /* default.caf */,
+				719EBCEC19838AED00103E0E /* get.caf */,
+				719EBCED19838AED00103E0E /* jump.caf */,
+				719EBCEE19838AED00103E0E /* powerup.caf */,
+				719EBCEF19838AED00103E0E /* powerup2.caf */,
+			);
+			path = sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,11 +233,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				719EBCF319838AED00103E0E /* jump.caf in Resources */,
+				719EBCF119838AED00103E0E /* default.caf in Resources */,
 				4374520B193D163800654986 /* Images.xcassets in Resources */,
+				719EBCF019838AED00103E0E /* death.caf in Resources */,
 				43745202193D163700654986 /* GameScene.sks in Resources */,
+				719EBCF419838AED00103E0E /* powerup.caf in Resources */,
 				437A3DBA193D326A00909BA0 /* bird.atlas in Resources */,
 				43745209193D163800654986 /* Main.storyboard in Resources */,
 				B66EFA9719835532009AE38F /* end.sks in Resources */,
+				719EBCF519838AED00103E0E /* powerup2.caf in Resources */,
+				719EBCF219838AED00103E0E /* get.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,6 +263,7 @@
 			files = (
 				43745204193D163800654986 /* GameScene.swift in Sources */,
 				43745206193D163800654986 /* GameViewController.swift in Sources */,
+				719EBCF719838B1A00103E0E /* PlaySounds.swift in Sources */,
 				43745200193D163700654986 /* AppDelegate.swift in Sources */,
 				B6FCF2A91983565500AD0B7A /* end.swift in Sources */,
 			);
